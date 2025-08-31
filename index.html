@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarkdPDF - Markdown to PDF Converter</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-file-pdf"></i>
+                    <h1>MarkdPDF</h1>
+                </div>
+                <div class="header-actions">
+                    <input type="file" id="file-input" accept=".md,.txt" hidden>
+                    <button class="btn-secondary" onclick="document.getElementById('file-input').click()">
+                        <i class="fas fa-folder-open"></i> Load File
+                    </button>
+                    <button class="btn-primary" id="save-pdf">
+                        <i class="fas fa-download"></i> Save PDF
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Editor Panel -->
+            <div class="editor-panel">
+                <div class="panel-header">
+                    <h3>Markdown Editor</h3>
+                    <div class="formatting-toolbar">
+                        <button class="format-btn" data-format="bold" title="Bold">
+                            <i class="fas fa-bold"></i>
+                        </button>
+                        <button class="format-btn" data-format="italic" title="Italic">
+                            <i class="fas fa-italic"></i>
+                        </button>
+                        <button class="format-btn" data-format="underline" title="Underline">
+                            <i class="fas fa-underline"></i>
+                        </button>
+                        <div class="divider"></div>
+                        <button class="format-btn" data-format="h1" title="Heading 1">H1</button>
+                        <button class="format-btn" data-format="h2" title="Heading 2">H2</button>
+                        <button class="format-btn" data-format="h3" title="Heading 3">H3</button>
+                        <button class="format-btn" data-format="h4" title="Heading 4">H4</button>
+                        <button class="format-btn" data-format="h5" title="Heading 5">H5</button>
+                        <button class="format-btn" data-format="h6" title="Heading 6">H6</button>
+                        <div class="divider"></div>
+                        <button class="format-btn" data-format="quote" title="Quote">
+                            <i class="fas fa-quote-right"></i>
+                        </button>
+                        <button class="format-btn" data-format="code" title="Code">
+                            <i class="fas fa-code"></i>
+                        </button>
+                        <button class="format-btn" data-format="link" title="Link">
+                            <i class="fas fa-link"></i>
+                        </button>
+                        <button class="format-btn" data-format="image" title="Image">
+                            <i class="fas fa-image"></i>
+                        </button>
+                        <button class="format-btn" data-format="table" title="Table">
+                            <i class="fas fa-table"></i>
+                        </button>
+                        <button class="format-btn" data-format="list" title="List">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="editor-container">
+                    <textarea id="markdown-input" placeholder="Start typing your markdown here...
+
+# Welcome to MarkdPDF
+
+This is a **markdown to PDF** converter. You can:
+
+- Write markdown in this editor
+- See live preview on the right
+- Use formatting buttons above
+- Load `.md` files
+- Export as PDF
+
+## Features
+
+- **Bold text**
+- *Italic text*
+- `Code snippets`
+- [Links](https://example.com)
+
+> This is a blockquote
+
+```javascript
+// Code blocks are supported
+function hello() {
+    console.log('Hello World!');
+}
+```
+
+| Column 1 | Column 2 | Column 3 |
+|----------|----------|----------|
+| Data 1   | Data 2   | Data 3   |
+| Data 4   | Data 5   | Data 6   |
+
+### Ready to convert?
+
+Click the **Save PDF** button when you're ready!"></textarea>
+                </div>
+            </div>
+
+            <!-- Preview Panel -->
+            <div class="preview-panel">
+                <div class="panel-header">
+                    <h3>Live Preview</h3>
+                    <div class="preview-controls">
+                        <button class="format-btn" id="refresh-preview" title="Refresh Preview">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="preview-container">
+                    <div id="markdown-preview" class="markdown-content"></div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <strong>MarkdPDF</strong> • Make Things Work
+        </footer>
+
+        <!-- Loading Overlay -->
+        <div class="loading-overlay" id="loading-overlay">
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+                <p>Generating PDF...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include external libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.5/purify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
